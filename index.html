@@ -3,11 +3,17 @@
 <head>
 	<meta name="author" content="Kanwarjit S Rupyal">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dice Game</title>
+	<title>The Dice Game</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+<h1>DICE GAME</h1>
 <body>
 	<script src="myScript.js"></script>
-	<button onclick="dispPts()">Player 1 Roll Dice</button>
-	<button onclick="diceSides()">Enter the dice you want to play with</button>
+	<ul>
+		<li><button onclick="diceSelect()">Select The Dice</button></li>
+		<li><button onclick="p1()">Player 1 - Roll Dice</button></li>
+		<li><button onclick="p2()">Player 2 - Roll Dice</button></li>
+	</ul>
 </body>
 </html>
