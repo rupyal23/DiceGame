@@ -6,7 +6,8 @@ let player1Total= 0;
 let player2Total= 0;
 let numTurnP1=0;
 let numTurnP2=0;
-//let lvl=[4,6,8,10,12,20];
+
+
 //DiceGame
 function rollDice(numSd){
 	let roll = Math.ceil(Math.random()*numSd);
@@ -15,68 +16,163 @@ function rollDice(numSd){
 
 function p1(){
 	numTurnP1++;
-	console.log("Player 1 Turn "+ numTurnP1);
 	let p1Roll = rollDice(numSdP1);
-	console.log("Rolled: "+ p1Roll);
 	player1Total += p1Roll;
-	console.log("Score: "+player1Total);
+	console.log("Player 1 Turn "+ numTurnP1+" Rolled:" +p1Roll +" Score:"+ player1Total);
 	if (p1Roll==numSdP1){
 			player1Total+=5;
-			console.log("You scored maximum, and received 5 BP, your Total Score is: "+player1Total);
+			console.log("You scored MAXIMUM!!, and received 5 BP, your Total Score is: "+player1Total);
 	}
 }
 function p2(){
 	numTurnP2++;
-	console.log("Player 2 Turn "+ numTurnP2);
 	let p2Roll = rollDice(numSdP2);
-	console.log("Rolled: "+p2Roll);
 	player2Total += p2Roll;
-	console.log("Score: "+player2Total);
+	console.log("Player 2 Turn "+ numTurnP2+" Rolled:" +p2Roll +" Score:"+ player2Total);
 	if (p2Roll==numSdP2){
 			player2Total+=5;
-			console.log("You scored maximum, and received 5 BP, your Total Score is: "+player2Total);
+			console.log("You scored MAXIMUM!!, and received 5 BP, your Total Score is: "+player2Total);
 	}
-	let bonus1 = bonusTier1();
-	let bonus2 = bonusTier2();
+	let chk1 = lvlCh2();
+	let chk2 = lvlCh3();
+	let chk3 = lvlCh4();
+	let chk4 = lvlCh5();
+	let chk5 = lvlCh6();
+	let chkWin = winGame();
 }
 
-function bonusTier1(){
-		while(numTurnP1==3&&numTurnP2==3){
-				if (player1Total>player2Total){
-				numSdP1=6;
-				console.log("Player 1 jumped to Level 2 for scoring more than Player 2 in 3 turns and will play with 6-Sided Dice");
-				break;
-			}
-			else if (player2Total>player1Total) {
-				numSdP2=6;
-				console.log("Player 2 jumped to Level 2 for scoring more than Player 1 in 3 turns and will play with 6-Sided Dice");
-				break;
-			}
-			else{
-				console.log("Both Players scored equal points.");
-				break;
-			}
+//Player reaches level 2 - plays with 6-sided Dice
+function lvlCh2(){
+		if(numTurnP1==3&&numTurnP2==3&&player1Total>player2Total){
+			numSdP1=lvlChg(numSdP1);
+			console.log("Player 1 SCORED MORE!! jumped to NEXT LEVEL!!!");
+			numSdP2 = lvlAuto(numSdP1, numSdP2);
 		}
+			else if(numTurnP1==3&&numTurnP2==3&&player2Total>player1Total){
+			numSdP2=lvlChg(numSdP2);
+			console.log("Player 2 SCORED MORE!! jumped to NEXT LEVEL!!!");
+			numSdP1 = lvlAuto(numSdP1, numSdP2);
+			}
+			else if(numTurnP1==3&&numTurnP2==3){
+			console.log("Both Players scored equal points.");
+			}
+		
+}
+
+//Player reached Level 3 - Plays with 8-Sided Dice	
+function lvlCh3(){
+		if(numTurnP1==6&&numTurnP2==6&&player1Total>player2Total){
+			numSdP1=lvlChg(numSdP1);
+			console.log("Player 1 SCORED MORE!! jumped to NEXT LEVEL!!!");
+			numSdP2 = lvlAuto(numSdP1, numSdP2);
+		}
+		else if (numTurnP1==6&&numTurnP2==6&&player2Total>player1Total) {
+				numSdP2=lvlChg(numSdP2);
+				console.log("Player 2 SCORED MORE!! jumped to NEXT LEVEL!!!");
+				numSdP1 = lvlAuto(numSdP1, numSdP2);
+				
+		}
+		else if(numTurnP1==6&&numTurnP2==6){
+				console.log("Both Players scored equal points.");
+		}
+				
+
+}
+
+//Player reached Level-4 - Plays with 10-Sided Dice
+function lvlCh4(){
+		if(numTurnP1==9&&numTurnP2==9&&player1Total>player2Total){
+			numSdP1=lvlChg(numSdP1);
+			console.log("Player 1 SCORED MORE!! jumped to NEXT LEVEL!!!");
+			numSdP2 = lvlAuto(numSdP1, numSdP2);
+				
+		}
+		else if (numTurnP1==9&&numTurnP2==9&&player2Total>player1Total) {
+			numSdP2=lvlChg(numSdP2);
+			console.log("Player 2 SCORED MORE!! jumped to NEXT LEVEL!!!");
+			numSdP1 = lvlAuto(numSdP1, numSdP2);
+		}
+		else if(numTurnP1==9&&numTurnP2==9){
+			console.log("Both Players scored equal points.");	
+		}
+		
+}
+
+//Player reaches Level 5 - Plays with 12-Sided Dice
+function lvlCh5(){
+		if(numTurnP1==12&&numTurnP2==12&&player1Total>player2Total){
+			numSdP1=lvlChg(numSdP1);
+			console.log("Player 1 SCORED MORE!! jumped to NEXT LEVEL!!!");
+			numSdP2 = lvlAuto(numSdP1, numSdP2);
+		}
+		else if (numTurnP1==12&&numTurnP2==12&&player2Total>player1Total) {
+			numSdP2=lvlChg(numSdP2);
+			console.log("Player 2 SCORED MORE!! jumped to NEXT LEVEL!!!");
+			numSdP1 = lvlAuto(numSdP1, numSdP2);
+				
+		}
+		else if(numTurnP1==12&&numTurnP2==12){
+			console.log("Both Players scored equal points.");
+		}
+		
+}
+
+//Player reaches Level 6 - Plays with 20-Sided Dice
+function lvlCh6(){
+		if(numTurnP1==15&&numTurnP2==15&&player1Total>player2Total){
+			numSdP1=lvlChg(numSdP1);
+			console.log("Player 1 SCORED MORE!! jumped to NEXT LEVEL!!!");
+			numSdP2 = lvlAuto(numSdP1, numSdP2);
+		}
+		else if (numTurnP1==15&&numTurnP2==15&&player2Total>player1Total) {
+			numSdP2=lvlChg(numSdP2);
+			console.log("Player 2 SCORED MORE!! jumped to NEXT LEVEL!!!");
+			numSdP1 = lvlAuto(numSdP1, numSdP2);
+		}
+		else if(numTurnP1==15&&numTurnP2==15){
+			console.log("Both Players scored equal points.");
+				
+		}
+		
+}
+
+function winGame() {
+		if(player1Total>=100){
+			console.log("PLAYER 1 WINS!!")
+		}
+		else if(player2Total>=100){
+			console.log("PLAYER 2 WINS!!")
+		}
+}
+
+function lvlChg(numSd){
+	if(numSd<12){
+		numSd=numSd+2;
+	}
+	else if(numSd=12){
+		numSd=numSd+8;
+	}
+	return numSd;
+}
+
+function lvlAuto(numSdP1, numSdP2){
+	if((numSdP1-numSdP2)>2){
+		numSdP2=lvlChg(numSdP2);
+		console.log("Player 2 Automatically jumped to NEXT LEVEL")
+		return numSdP2;
+	}
+	else if((numSdP2-numSdP1)>2){
+		numSdP1=lvlChg(numSdP1);
+		console.log("Player 1 Automatically jumped to NEXT LEVEL")
+		return numSdP1;
+	}
+	else{
+		return numSdP1;
+		return numSdP2;
+	}
 }
 	
-function bonusTier2(){
-		while(numTurnP1==6&&numTurnP2==6){
-				if (player1Total>player2Total){
-				numSdP1=8;
-				console.log("Player 1 jumped to Level 3 for scoring more than Player 2 in 6 turns and will play with 8-Sided Dice");
-				break;
-			}
-			else if (player2Total>player1Total) {
-				numSdP2=8;
-				console.log("Player 2 jumped to Level 3 for scoring more than Player 1 in 6 turns and will play with 8-Sided Dice");
-				break;
-			}
-			else{
-				console.log("Both Players scored equal points.");
-				break;
-			}
-		}
-}
+
 
 
 /*function diceSelect(){
@@ -142,20 +238,6 @@ function bonusTier2(){
 	console.log("Number of Dices to play with is "+dice);
 	p1(dice);
 }*/
-
-
-
-
-
-
-
-//function dispPts(){
-//	let ptP1='';
-//	ptP1 += rollDice();
-	//ptP1 += 60;
-//	console.log(ptP1);
-//}
-
 
 
 	
