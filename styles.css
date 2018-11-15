@@ -2,6 +2,9 @@
 *{
 	box-sizing: border-box;
 }
+body{
+	background-color: white;
+}
 h1{
 	font-family: impact;
 	font-size: 80px;
@@ -13,9 +16,13 @@ h2{
 }
 ul li{
 	list-style-type: none;
-	padding: 20px
+	padding: 10px;
 
 }
 p{
 	font: bolder; font-weight: bolder;
+}
+img{
+	width: 100%;
+	height: auto;
 }

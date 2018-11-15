@@ -12,15 +12,22 @@
 	<script src="myScript.js"></script>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-2">
 				<ul>
-					<li><button onclick="p1()"><p>PLAYER 1</p>Roll Dice</button></li>
-					<li><button onclick="p2()"><p>PLAYER 2</p>Roll Dice</button></li>
+					<li><button id="btnP1" onclick="p1()">PLAYER 1 Roll Dice</button></li>
+					<li><button id="btnP2" onclick="p2()">PLAYER 2 Roll Dice</button></li>
 				</ul>
 			</div>
-			<div style="max-height:0;" class="col-sm-9">
-				<img src="12sided.jpg">
+			<div class="col-sm-4">
+				<img src="dice1.png">
 			</div>
+			<div style="padding: 2px;" class="col-sm-6">
+				<h2>INSTRUCTIONS</h2>
+				<p>Rolling Dice<br>Each Player has their own button. Click the button to roll the dice</p>
+				<p>Each Player will have 3 turns to roll the dice.</p>
+				<p>Please Do not hit the button more than 3 turns.</p>
+			</div>
+
 		</div>
 	</div>
 	<div class="container">
@@ -43,7 +50,7 @@
 				<p>BONUS POINTS- If any Player scores max in a single turn for that Level will be awarded 5 Bonus Points(BP).
 				</p>
 				<p>First Player to score 100 WINS THE GAME !</p>
-					
+
 			</div>
 		</div>
 	</div>

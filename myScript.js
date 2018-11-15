@@ -19,6 +19,7 @@ function p1(){
 	let p1Roll = rollDice(numSdP1);
 	player1Total += p1Roll;
 	console.log("Player 1 Turn "+ numTurnP1+" Rolled:" +p1Roll +" Score:"+ player1Total);
+	//Bonus Pts for Scoring Max
 	if (p1Roll==numSdP1){
 			player1Total+=5;
 			console.log("You scored MAXIMUM!!, and received 5 BP, your Total Score is: "+player1Total);
@@ -56,7 +57,7 @@ function lvlCh2(){
 			else if(numTurnP1==3&&numTurnP2==3){
 			console.log("Both Players scored equal points.");
 			}
-		
+			
 }
 
 //Player reached Level 3 - Plays with 8-Sided Dice	
@@ -75,8 +76,7 @@ function lvlCh3(){
 		else if(numTurnP1==6&&numTurnP2==6){
 				console.log("Both Players scored equal points.");
 		}
-				
-
+		
 }
 
 //Player reached Level-4 - Plays with 10-Sided Dice
@@ -133,15 +133,19 @@ function lvlCh6(){
 			console.log("Both Players scored equal points.");
 				
 		}
-		
+	
 }
 
 function winGame() {
-		if(player1Total>=100){
+		if(numTurnP1==numTurnP2&&player1Total>=100){
 			console.log("PLAYER 1 WINS!!")
+			document.getElementById("btnP1").disabled=true;
+			document.getElementById("btnP2").disabled=true;
 		}
-		else if(player2Total>=100){
+		else if(numTurnP1==numTurnP2&&player2Total>=100){
 			console.log("PLAYER 2 WINS!!")
+			document.getElementById("btnP1").disabled=true;
+			document.getElementById("btnP2").disabled=true;
 		}
 }
 
@@ -169,7 +173,9 @@ function lvlAuto(numSdP1, numSdP2){
 	else{
 		return numSdP1;
 		return numSdP2;
-	}
+	}	
+		
+	
 }
 	
 
